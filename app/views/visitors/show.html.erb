@@ -1,6 +1,46 @@
 <html>
   <head>
-    <script type="text/javascript">
+ 
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Pass Rate', 'Failure rate'],
+          ['2014', <%= @matric.pass_rate %>, <%= @matric.failure_rate %>],
+          ['2015', <%= @matric.pass_rate2015 %>, <%= @matric.failure_rate2015 %>],
+          ['2016', <%= @matric.pass_rate2016 %>, <%= @matric.failure_rate2016 %>]
+         
+        ]);
+
+        var options = {
+
+          chart: {
+            bg: '000000',
+            title: '<%= @matric.school_name %>',
+            subtitle: 'Report analyser',
+            align: "center"
+          },
+           vAxis: {
+          title: 'Percentage (%)',
+          minValue: 0,
+          maxValue: 100,
+          format:'#,##%'
+        },
+        hAxis: {
+          title: 'Year'
+        },
+
+          bars: 'vertical' // Required for Material Bar Charts.
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('chartcontainer'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+       <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -26,17 +66,19 @@
       }
     </script>
   </head>
+  </head>
   <body><div class="container">
 <button class="btn btn-premary btn-lg col-md-4 col-xs-4" id="btn1">Bar</button>
 <button class="btn btn-premary btn-lg col-md-4 col-xs-4 col-xs-4" id="btn2">Pie</button>
 <button class="btn btn-premary btn-lg col-md-4 col-xs-4 col-xs-4" id="btn3">Average</button>
 </div>
+
 <div class="container">
 <div>
-<div id="chartcontainer" class="center-block col-md-12"></div> 
+<div id="chartcontainer" style="width: 100%; height: 500px;"></div> 
 </div>
 <div>
-<div id="chart-container"></div> 
+<div id="chart-container" style="width: 900px; height: 500px;"></div> 
 </div>
 <div>
 <div id="barchart_material" style="width: 900px; height: 500px;"></div> 
