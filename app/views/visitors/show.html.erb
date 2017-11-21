@@ -7,25 +7,67 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Year', 'Number'],
+          ['2014',   <%= @matric.wrote_2014%>],
+          ['2014',      <%= @matric.passed_2014%>],
+          ['2015',  <%= @matric.wrote_2015%>],
+          ['2015', <%= @matric.passed_2015%>],
+          ['2016', <%= @matric.wrote_2016%>],
+          ['2016',    <%= @matric.passed_2016%>]
         ]);
 
         var options = {
           title: 'My Daily Activities'
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart = new google.visualization.PieChart(document.getElementById('chart-container'));
 
         chart.draw(data, options);
       }
     </script>
   </head>
-  <body>
-    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  <body><div class="container">
+<button class="btn btn-premary btn-lg col-md-4 col-xs-4" id="btn1">Bar</button>
+<button class="btn btn-premary btn-lg col-md-4 col-xs-4 col-xs-4" id="btn2">Pie</button>
+<button class="btn btn-premary btn-lg col-md-4 col-xs-4 col-xs-4" id="btn3">Average</button>
+</div>
+<div class="container">
+<div>
+<div id="chartcontainer" class="center-block col-md-12"></div> 
+</div>
+<div>
+<div id="chart-container"></div> 
+</div>
+<div>
+<div id="barchart_material" style="width: 900px; height: 500px;"></div> 
+</div>
+</div>
+
+ <script> 
+(function ($) {
+$('#btn1').click(function () {
+$('#chart-container').hide();
+$('#barchart_material').hide();
+ $('#chartcontainer').slideDown(3000);
+  
+ }); 
+ })(jQuery);
+ 
+ (function ($) {
+$('#btn2').click(function () {
+$('#chartcontainer').hide(); 
+$('#barchart_material').hide();
+ $('#chart-container').slideDown(3000); 
+  });
+ })(jQuery);
+ 
+  (function ($) {
+$('#btn3').click(function () {
+$('#chartcontainer').hide(); 
+$('#chart-container').hide(); 
+ $('#barchart_material').slideDown(3000); 
+  });
+ })(jQuery);
+ </script>
   </body>
 </html>

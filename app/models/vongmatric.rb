@@ -1,6 +1,6 @@
 require 'csv'
 class Vongmatric < ApplicationRecord
-	
+	validates :school_name, presence: true, uniqueness: true, on: :create
 	def self.import(file)
 		CSV.foreach(file.path) do | row |
 			emis, centre_no, sname, wrote_2014, passed_2014, wrote_2015, passed_2015, wrote_2016, passed_2016,
