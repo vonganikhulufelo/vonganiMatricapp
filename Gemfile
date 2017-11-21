@@ -8,6 +8,8 @@ end
 gem 'rails_12factor', group: :production
 gem 'chart'
 ruby '2.3.3'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record

@@ -1,0 +1,2 @@
+class Vongmatric < ApplicationRecord
+end
