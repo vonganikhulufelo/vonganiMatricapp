@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/sign_up'
+
+  get 'users/sign_in'
+
   get 'visitors/index'
-  root 'visitors#index'
+  root 'users#sign_up'
   get 'visitors/show'
-  
+  resources :sessions, only: [:new, :create]
+  resources :users, only: [:index, :create, :sign_up]
    resources :visitors do 
   	collection { post :import }
   end
