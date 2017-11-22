@@ -40,28 +40,25 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
-       <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
+      <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
-
       function drawChart() {
-
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Number'],
-          ['2014',   <%= @matric.wrote_2014%>],
-          ['2014',      <%= @matric.passed_2014%>],
-          ['2015',  <%= @matric.wrote_2015%>],
-          ['2015', <%= @matric.passed_2015%>],
-          ['2016', <%= @matric.wrote_2016%>],
-          ['2016',    <%= @matric.passed_2016%>]
+          ['Year', 'Failure(%)'],
+          ['2014',  <%= @matric.failure_rate %>],
+          ['2015',  <%= @matric.failure_rate2015 %>],
+          ['2016', <%= @matric.failure_rate2016 %>]
         ]);
 
-        var options = {
-          title: 'My Daily Activities'
-        };
+      var options = {
+        legend: 'none',
+        pieSliceText: 'label',
+        title: 'Failing analyser',
+        pieStartAngle: 100,
+      };
 
         var chart = new google.visualization.PieChart(document.getElementById('chart-container'));
-
         chart.draw(data, options);
       }
     </script>
@@ -71,16 +68,16 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'pass average'],
+          ['Year', 'Pass average'],
           ['2014',  <%= @matric.pass_rate %>],
           ['2015',  <%= @matric.pass_rate2015 %>],
           ['2016',  <%= @matric.pass_rate2016 %>]
         ]);
 
         var options = {
-          title: 'Company Performance',
+          title: 'Performance',
           curveType: 'function',
-          legend: { position: 'bottom' }
+          legend: { position: 'right' }
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('barchart_material'));
@@ -98,13 +95,13 @@
 
 <div class="container">
 <div>
-<div id="chartcontainer" style="width: 100%; height: 500px;"></div> 
+<div id="chartcontainer" class="col-md-12" style="width: 100%; height: 500px;"></div> 
 </div>
 
-<div id="chart-container" style="width: 100%; height: 1000px;"></div> 
+<div id="chart-container" class="col-md-12" style="width: 100%; height: 500px;"></div> 
 
 <div>
-<div id="barchart_material" style="width: 100%; height: 1000px;"></div> 
+<div id="barchart_material" class="col-md-12" style="width: 100%; height: 500px;"></div> 
 </div>
 </div>
 
@@ -113,8 +110,7 @@
 $('#btn1').click(function () {
 $('#chart-container').hide();
 $('#barchart_material').hide();
- $('#chartcontainer').slideDown(3000);
-  
+ $('#chartcontainer').show();
  }); 
  })(jQuery);
  
@@ -122,7 +118,7 @@ $('#barchart_material').hide();
 $('#btn2').click(function () {
 $('#chartcontainer').hide(); 
 $('#barchart_material').hide();
- $('#chart-container').slideDown(3000); 
+ $('#chart-container').show(); 
   });
  })(jQuery);
  
@@ -130,7 +126,7 @@ $('#barchart_material').hide();
 $('#btn3').click(function () {
 $('#chartcontainer').hide(); 
 $('#chart-container').hide(); 
- $('#barchart_material').slideDown(3000); 
+ $('#barchart_material').show();
   });
  })(jQuery);
  </script>

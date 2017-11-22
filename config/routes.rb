@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'visitors/index'
   root 'visitors#index'
   get 'visitors/show'
+  
    resources :visitors do 
   	collection { post :import }
   end

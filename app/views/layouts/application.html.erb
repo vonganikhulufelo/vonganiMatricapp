@@ -22,7 +22,7 @@
         </div>
         <div id="navbarCollapse" class="collapse navbar-collapse">
        
-          <%= form_tag visitors_path, method: 'get',class: "navbar-form navbar-left" do %>
+          <%=form_tag visitors_path, method: 'get',class: "navbar-form navbar-left" do %>
           <%= text_field_tag :search, params[:search], class: "form-control" %>
 
           <%= submit_tag "Search" ,class: "btn btn-default"%>
@@ -34,7 +34,7 @@
         </div>
     </nav>
   </div>
-  	<div class="container">
+  	<div class="container " >
     <%= yield %>
     </div>
   </body>
