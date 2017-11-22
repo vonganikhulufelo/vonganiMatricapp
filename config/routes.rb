@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'users#sign_up'
   get 'visitors/show'
   resources :sessions, only: [:new, :create]
-  resources :users, only: [:index, :create, :sign_up]
+  resources :users, only: [:index, :create, :new]
    resources :visitors do 
   	collection { post :import }
   end
